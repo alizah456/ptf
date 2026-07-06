@@ -5,19 +5,13 @@ function About() {
       className="bg-slate-900 text-white py-20 px-6 md:px-16 lg:px-24"
     >
       <div className="max-w-6xl mx-auto">
-
-        {/* Heading */}
         <div className="text-center mb-14">
           <h2 className="text-4xl font-bold text-cyan-400">About Me</h2>
           <p className="text-gray-400 mt-3">
             Get to know a little about me.
           </p>
         </div>
-
-        {/* Content */}
         <div className="grid md:grid-cols-2 gap-12 items-start">
-
-          {/* Left Side */}
           <div>
             <h3 className="text-3xl font-semibold mb-6">
               Hello, I'm <span className="text-cyan-400">Alizah</span>
@@ -35,8 +29,6 @@ function About() {
               and work on projects that help me grow as a developer.
             </p>
           </div>
-
-          {/* Right Side */}
           <div className="bg-slate-800 rounded-2xl p-8 shadow-lg border border-slate-700">
 
             <div className="space-y-6">

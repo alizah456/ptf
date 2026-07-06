@@ -32,8 +32,8 @@ function Hero() {
             <div className="flex flex-wrap gap-4 mt-8">
 
               <a
-                href="/cv.pdf"
-                download="CV.pdf"
+                href="../dev.pdf"
+                download="dev.pdf"
                 className="bg-cyan-400 text-slate-900 px-6 py-3 rounded-lg font-semibold hover:bg-cyan-300 transition"
               >
                 Download CV
@@ -49,8 +49,6 @@ function Hero() {
             </div>
 
           </div>
-
-          {/* Right Side */}
           <div className="flex justify-center">
 
             <div className="relative">

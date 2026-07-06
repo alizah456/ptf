@@ -10,7 +10,7 @@ function Skills() {
     },
     {
       title: "Database",
-      skills: ["MySQL"],
+      skills: ["MySQL", "SQL Server"],
     },
     {
       title: "Tools",
@@ -24,9 +24,7 @@ function Skills() {
       className="bg-slate-950 text-white py-20 px-6 md:px-16"
     >
       <div className="max-w-7xl mx-auto">
-
-        {/* Heading */}
-        <div className="text-center mb-14">
+<div className="text-center mb-14">
 
           <p className="text-cyan-400 font-medium tracking-wide uppercase">
             What I Know
@@ -44,9 +42,6 @@ function Skills() {
           </p>
 
         </div>
-
-        {/* Cards */}
-
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
 
           {skillCategories.map((category) => (
