@@ -1,95 +1,103 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { HiMenu, HiX } from "react-icons/hi";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState("home");
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+
+    const handleScroll = () => {
+      let current = "home";
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+
+        if (
+          window.scrollY >= sectionTop &&
+          window.scrollY < sectionTop + sectionHeight
+        ) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      setActive(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    "home",
+    "about",
+    "skills",
+    "projects",
+    "contact",
+  ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-slate-950/90 backdrop-blur-md shadow-lg z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full bg-slate-950/90 backdrop-blur-md border-b border-slate-800 z-50">
+      <div className="max-w-7xl mx-auto h-20 px-6 flex items-center justify-between">
 
-        <h1 className="text-3xl font-bold text-cyan-400">
+        <h1 className="text-2xl md:text-3xl font-bold text-cyan-400">
           Aliza Arshad
         </h1>
-        <ul className="hidden md:flex gap-8 text-white font-medium">
-          <li>
-            <a href="#home" className="hover:text-cyan-400 duration-300">
-              Home
-            </a>
-          </li>
 
-          <li>
-            <a href="#about" className="hover:text-cyan-400 duration-300">
-              About
-            </a>
-          </li>
+        <ul className="hidden md:flex items-center gap-6">
 
-          <li>
-            <a href="#skills" className="hover:text-cyan-400 duration-300">
-              Skills
-            </a>
-          </li>
+          {navLinks.map((link) => (
+            <li key={link}>
+              <a
+                href={`#${link}`}
+                onClick={() => setActive(link)}
+              className={`transition duration-300 capitalize font-medium
+${
+  active === link
+    ? "text-cyan-400"
+    : "text-white hover:text-cyan-400"
+}`}
+              >
+                {link}
+              </a>
+            </li>
+          ))}
 
-          <li>
-            <a href="#projects" className="hover:text-cyan-400 duration-300">
-              Projects
-            </a>
-          </li>
-
-          <li>
-            <a href="#contact" className="hover:text-cyan-400 duration-300">
-              Contact
-            </a>
-          </li>
         </ul>
+
         <button
-          className="md:hidden text-3xl text-white"
+          className="md:hidden text-white text-3xl"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          ☰
+          {menuOpen ? <HiX /> : <HiMenu />}
         </button>
+
       </div>
+
       {menuOpen && (
-        <div className="md:hidden bg-slate-900 text-center py-5 space-y-5">
+        <div className="md:hidden bg-slate-900 py-5">
 
-          <a
-            href="#home"
-            className="block hover:text-cyan-400"
-            onClick={() => setMenuOpen(false)}
-          >
-            Home
-          </a>
-
-          <a
-            href="#about"
-            className="block hover:text-cyan-400"
-            onClick={() => setMenuOpen(false)}
-          >
-            About
-          </a>
-
-          <a
-            href="#skills"
-            className="block hover:text-cyan-400"
-            onClick={() => setMenuOpen(false)}
-          >
-            Skills
-          </a>
-
-          <a
-            href="#projects"
-            className="block hover:text-cyan-400"
-            onClick={() => setMenuOpen(false)}
-          >
-            Projects
-          </a>
-
-          <a
-            href="#contact"
-            className="block hover:text-cyan-400"
-            onClick={() => setMenuOpen(false)}
-          >
-            Contact
-          </a>
+          {navLinks.map((link) => (
+            <a
+              key={link}
+              href={`#${link}`}
+              onClick={() => {
+                setActive(link);
+                setMenuOpen(false);
+              }}
+              className={`block text-center py-3 capitalize transition
+              ${
+                active === link
+                  ? "text-cyan-400 font-semibold"
+                  : "text-white hover:text-cyan-400"
+              }`}
+            >
+              {link}
+            </a>
+          ))}
 
         </div>
       )}

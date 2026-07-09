@@ -1,5 +1,5 @@
 import profile from "../assets/profile.png";
-
+import cv from "../assets/dev.pdf";
 function Hero() {
   return (
     <section
@@ -32,8 +32,8 @@ function Hero() {
             <div className="flex flex-wrap gap-4 mt-8">
 
               <a
-                href="../dev.pdf"
-                download="dev.pdf"
+                href={cv}
+                download
                 className="bg-cyan-400 text-slate-900 px-6 py-3 rounded-lg font-semibold hover:bg-cyan-300 transition"
               >
                 Download CV

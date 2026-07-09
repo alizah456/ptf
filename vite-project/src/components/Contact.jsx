@@ -155,10 +155,11 @@ function Contact() {
             </div>
 
           </div>
- <form
-            onSubmit={handleSubmit}
-            className="bg-slate-900 border border-slate-800 rounded-3xl p-10">
-            <div className="grid md:grid-cols-2 gap-6">
+<form
+  onSubmit={handleSubmit}
+  className="bg-slate-900 border border-slate-800 rounded-3xl p-10 space-y-6"
+>
+   <div className="grid md:grid-cols-2 gap-6">
   <div>
                 <label className="block mb-2 font-medium">
                   Name
